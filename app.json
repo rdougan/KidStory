@@ -1,4 +1,29 @@
 {
+    "builds": {
+        "web": {"default": true},
+        "native": {
+            "packager": "phonegap",
+            "phonegap" : {
+                "config": {
+                    // Uncomment the line below and add the platform you wish to build for
+                    //"platform": "ios",
+
+                    // Uncomment and Set this line to true to enable PhoneGap Remote Building.
+                    // To properly use this you must set the following properties in your local.properties file (if this file does not exist create it in your app root)
+                    // phonegap.remote.username=myname@domain.com
+                    // phonegap.remote.password=mys3cr3tp@ssw0rd
+                    //"remote":false,
+
+                    // Name and ID properties are only used during app creation
+                    // edit this if you are recreating your phonegap app
+                    //"id": "com.domain.KidStory",
+                    //"name": "KidStory"
+                }
+            }
+        }
+    },
+
+                
     /**
      * The application's namespace, used by Sencha Command to generate classes
      */
@@ -39,10 +64,6 @@
      *      }
      */
     "js": [
-		{
-			"path": "phonegap.js",
-			"remote": true
-		},
         {
             "path": "touch/sencha-touch.js",
             "x-bootstrap": true
@@ -106,7 +127,6 @@
      * Extra resources to be copied along when build
      */
     "resources": [
-		"config.xml",
         "resources/images",
         "resources/icons",
         "resources/startup",
