@@ -1,0 +1,16 @@
+{
+    "books": [{
+        "name": "Book 1",
+        "path": "book_1"
+    }, {
+        "name": "Book 2",
+        "path": "book_2",
+        "price": 1.99,
+        "samplePageCount": 2
+    }, {
+        "name": "Book 3",
+        "path": "book_3",
+        "price": 3.99,
+        "samplePageCount": 2
+    }]
+}
