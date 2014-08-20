@@ -13,10 +13,12 @@
 Ext.application({
     name: 'KidStory',
 
-    booksBaseURL: 'http://vm-rms.s3-eu-west-1.amazonaws.com/books/',
+    booksBaseURL: 'http://localhost/odesk/02-08-2014/books/',
+    // booksBaseURL: 'http://vm-rms.s3-eu-west-1.amazonaws.com/books/',
 
     requires: [
         'KidStory.util.PhoneGap',
+        'KidStory.util.Zip',
         'Ext.MessageBox'
     ],
 

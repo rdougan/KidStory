@@ -52,7 +52,7 @@ Ext.define('KidStory.view.page.End', {
             base = KidStory.app.booksBaseURL + me.getBook().get('path') + '/',
             image;
 
-        image = base + 'End-Page.' + book.get('endImageExtension');
+        image = book.urlForFile('End-Page.' + book.get('endImageExtension'));
 
         el.setStyle('background-image', 'url(' + image + ')');
     }

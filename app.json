@@ -65,6 +65,18 @@
      */
     "js": [
         {
+            "path": "lib/zip/zip.js"
+        },
+        {
+            "path": "lib/zip/zip-ext.js"
+        },
+        {
+            "path": "lib/zip/mime-types.js"
+        },
+        {
+            "path": "phonegap.js"
+        },
+        {
             "path": "touch/sencha-touch.js",
             "x-bootstrap": true
         },

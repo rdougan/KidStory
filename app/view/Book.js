@@ -288,7 +288,6 @@ Ext.define('KidStory.view.Book', {
         var pageData = page.pageData ? page.pageData() : null,
             pageIndex = page.getPageIndex ? page.getPageIndex() : null,
             book = me.getBook(),
-            baseAudioUrl = 'resources/books/' + book.get('path') + '/',
             repeat = false,
             audioFileUrl;
 
@@ -303,7 +302,7 @@ Ext.define('KidStory.view.Book', {
         }
 
         // Start playing the audio
-        KidStory.app.getController('Books').playAudio(baseAudioUrl + audioFileUrl, repeat, me.audioEnded, function(position) {
+        KidStory.app.getController('Books').playAudio(book.urlForFile(audioFileUrl), repeat, me.audioEnded, function(position) {
             me.audioChange(position, page);
         }, me);
     },

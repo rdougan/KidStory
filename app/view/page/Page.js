@@ -201,7 +201,7 @@ Ext.define('KidStory.view.page.Page', {
             base = KidStory.app.booksBaseURL + me.getBook().get('path') + '/',
             image;
 
-        image = base + 'Image-' + (pageIndex + 1) + '.' + pageData['imageExtension'];
+        image = book.urlForFile('Image-' + (pageIndex + 1) + '.' + pageData['imageExtension']);
 
         el.setStyle('background-image', 'url(' + image + ')');
     }

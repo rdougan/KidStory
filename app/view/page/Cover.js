@@ -137,7 +137,7 @@ Ext.define('KidStory.view.page.Cover', {
             base = KidStory.app.booksBaseURL + me.getBook().get('path') + '/',
             image;
 
-        image = base + 'Cover-Page.' + book.get('coverImageExtension');
+        image = book.urlForFile('Cover-Page.' + book.get('coverImageExtension'));
 
         el.setStyle('background-image', 'url(' + image + ')');
     }

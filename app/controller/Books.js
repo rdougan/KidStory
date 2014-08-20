@@ -156,18 +156,8 @@ Ext.define('KidStory.controller.Books', {
             return;
         }
 
-        // Fire off a request to get the book data
-        Ext.Ajax.request({
-            url: KidStory.app.booksBaseURL + config.book.get('path') + '/book.json',
-            success: function(response) {
-                // Read the JSON file and decode it
-                var responseJson = Ext.decode(response.responseText);
-
-                // Set the loadedData field to true so we know in the future that it is loaded
-                responseJson['loadedData'] = true;
-
-                // Updated the record and let the callback know
-                config.book.set(responseJson);
+        config.book.download({
+            success: function() {
                 config.success(config.book);
             },
             failure: function() {
