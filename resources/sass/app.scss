@@ -20,7 +20,6 @@
 		background: #fff;
 		width: 250px;
 		height: 350px;
-		margin: 240px 0 0 40px;
 		text-align: center;
 		position: relative;
 
@@ -39,23 +38,24 @@
 			bottom: 20px;
 		}
 
+		.phone & {
+			margin: 5px 0 0 20px;
+			width: 90px * 1.5;
+			height: 150px * 1.5;
+		}
+
+		.tablet & {
+			margin: 240px 0 0 40px;
+			width: 90px * 2.5;
+			height: 150px * 2.5;
+		}
+
 		&:first-child {
 			margin-left: 80px;
 		}
 
 		&:last-child {
 			margin-right: 80px;
-		}
-
-		.phone & {
-			width: 90px * 1.5;
-			height: 150px * 1.5;
-		}
-
-		.tablet & {
-			// margin-top: 360px;
-			width: 90px * 2.5;
-			height: 150px * 2.5;
 		}
 	}
 }

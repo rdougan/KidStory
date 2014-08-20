@@ -4,6 +4,10 @@
 Ext.define('KidStory.util.phonegap.iap.iOS', {
     statics: {
         initialize: function() {
+            if (!KidStory.util.PhoneGap.is()) {
+                return;
+            }
+            
             window.storekit.init({
                 debug: true,
 

@@ -4,4 +4,4 @@
  * combination of content from app.json, and all required package's package.json
  * files.  Customizations should be placed in app.json.
  */
-{"id":"da587310-ba88-4672-84c1-779b96494d9d","js":[{"path":"phonegap.js","remote":true},{"path":"touch/sencha-touch.js","isSdk":true},{"path":"bootstrap.js"},{"path":"app.js","update":"delta"}],"css":[{"path":"resources/css/app.css","update":"delta"}]}
+{"id":"da587310-ba88-4672-84c1-779b96494d9d","js":[{"path":"touch/sencha-touch.js","isSdk":true},{"path":"bootstrap.js"},{"path":"app.js","update":"delta"},{"path":"phonegap.js","remote":true}],"css":[{"path":"resources/css/app.css","update":"delta"}]}

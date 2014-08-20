@@ -6,13 +6,13 @@
             "phonegap" : {
                 "config": {
                     // Uncomment the line below and add the platform you wish to build for
-                    //"platform": "ios",
+                    "platform": "android",
 
                     // Uncomment and Set this line to true to enable PhoneGap Remote Building.
                     // To properly use this you must set the following properties in your local.properties file (if this file does not exist create it in your app root)
                     // phonegap.remote.username=myname@domain.com
                     // phonegap.remote.password=mys3cr3tp@ssw0rd
-                    //"remote":false,
+                    "remote": true
 
                     // Name and ID properties are only used during app creation
                     // edit this if you are recreating your phonegap app
@@ -130,7 +130,6 @@
         "resources/images",
         "resources/icons",
         "resources/startup",
-        "resources/books",
         "resources/books.json"
     ],
 

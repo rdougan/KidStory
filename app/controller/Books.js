@@ -131,6 +131,9 @@ Ext.define('KidStory.controller.Books', {
                 Ext.Viewport.setActiveItem(me.bookView);
             },
             failure: function() {
+                // Remove the loading mask
+                Ext.Viewport.setMasked(false);
+
                 Ext.Viewport.setActiveItem(0);
 
                 Ext.Msg.alert('Problem', 'Sorry, there was a problem loading this book. Please try again.');
@@ -155,7 +158,7 @@ Ext.define('KidStory.controller.Books', {
 
         // Fire off a request to get the book data
         Ext.Ajax.request({
-            url: 'resources/books/' + config.book.get('path') + '/book.json',
+            url: KidStory.app.booksBaseURL + config.book.get('path') + '/book.json',
             success: function(response) {
                 // Read the JSON file and decode it
                 var responseJson = Ext.decode(response.responseText);

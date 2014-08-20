@@ -49,7 +49,7 @@ Ext.define('KidStory.view.page.End', {
         var me = this,
             el = me.element,
             book = me.getBook(),
-            base = 'resources/books/' + me.getBook().get('path') + '/',
+            base = KidStory.app.booksBaseURL + me.getBook().get('path') + '/',
             image;
 
         image = base + 'End-Page.' + book.get('endImageExtension');
