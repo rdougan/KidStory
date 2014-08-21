@@ -12,6 +12,9 @@ Ext.define('KidStory.util.phonegap.Audio', {
             var singleton = KidStory.util.phonegap.Audio;
 
             if (KidStory.util.PhoneGap.is()) {
+                if (singleton.changeInterval) {
+                    clearInterval(singleton.changeInterval);
+                }
 
                 if (singleton.audioPlayer) {
                     // Check if we are already playing the same url
@@ -22,15 +25,12 @@ Ext.define('KidStory.util.phonegap.Audio', {
                     singleton.stopAudio();
                 }
 
-                // If android, we need to change the url
-                if (Ext.os.is.Android && !url.match('android_asset/www')) {
-                    url = '/android_asset/www/' + url;
-                }
-
                 singleton.audioPlayer = new Media(url, null, function() {
 
                 }, function(status) {
                     if (status == Media.MEDIA_STOPPED) {
+                        clearInterval(singleton.changeInterval);
+
                         if (repeat && !singleton.forceStop) {
                             singleton.audioPlayer = null;
                             singleton.playAudio(url, repeat, callback, scope);
@@ -42,6 +42,20 @@ Ext.define('KidStory.util.phonegap.Audio', {
                         }
 
                         singleton.forceStop = false;
+                    }
+                    else {
+                        if (changeCallback) {
+                            singleton.changeInterval = setInterval(function() {
+                                if (!singleton.audioPlayer) {
+                                    clearInterval(singleton.changeInterval);
+                                    return;
+                                }
+
+                                singleton.audioPlayer.getCurrentPosition(function(position) {
+                                    changeCallback.call(scope, position);
+                                });
+                            }, 500);
+                        }
                     }
                 });
 

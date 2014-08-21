@@ -115,7 +115,8 @@ Ext.define('KidStory.controller.Books', {
 
         // Show a loading mask while the book is loaded
         Ext.Viewport.setMasked({
-            xtype: 'loadmask'
+            xtype: 'loadmask',
+            message: 'Downloading...'
         });
 
         me.loadBook({
@@ -137,6 +138,12 @@ Ext.define('KidStory.controller.Books', {
                 Ext.Viewport.setActiveItem(0);
 
                 Ext.Msg.alert('Problem', 'Sorry, there was a problem loading this book. Please try again.');
+            },
+            progressCallback: function(progress) {
+                Ext.Viewport.setMasked({
+                    xtype: 'loadmask',
+                    message: 'Unpacking - ' + Math.round(progress) + '%'
+                });
             }
         });
     },
@@ -162,6 +169,11 @@ Ext.define('KidStory.controller.Books', {
             },
             failure: function() {
                 config.failure();
+            },
+            progressCallback: function(progress) {
+                if (config.progressCallback) {
+                    config.progressCallback(progress);
+                }
             }
         });
     },

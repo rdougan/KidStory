@@ -1,1 +1,1 @@
-{"id":"da587310-ba88-4672-84c1-779b96494d9d","js":[{"path":"app.js","update":"delta","version":"652738dcac04f68d1f272af513a71b47a64826a4"}],"css":[{"path":"resources/css/app.css","update":"delta","version":"5ac3a4b0e8409a678fb609a145f8f54294de1ca6"}]}
+{"id":"da587310-ba88-4672-84c1-779b96494d9d","js":[{"path":"lib/zip/zip.js"},{"path":"lib/zip/zip-ext.js"},{"path":"lib/zip/mime-types.js"},{"path":"lib/zip/deflate.js"},{"path":"lib/zip/inflate.js"},{"path":"lib/zip/zip-fs.js"},{"path":"app.js"}],"css":[{"path":"resources/css/app.css","update":"delta"}]}

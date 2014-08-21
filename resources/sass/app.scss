@@ -3,10 +3,10 @@
 
 @mixin bp($point) {
   @if $point == tablet {
-    @media (min-width: 1001px) { @content; }
+    @media (min-width: 301px) { @content; }
   }
   @else if $point == phone {
-    @media (max-width: 1000px)  { @content; }
+    @media (max-width: 300px)  { @content; }
   }
 }
 

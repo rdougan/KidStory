@@ -57,6 +57,7 @@ Ext.define('KidStory.model.Book', {
         }
 
         KidStory.util.Zip.unzip({
+            filename: this.get('path') + '.zip',
             url: KidStory.app.booksBaseURL + this.get('path') + '.zip',
             scope: this,
             success: function(data) {
@@ -71,6 +72,11 @@ Ext.define('KidStory.model.Book', {
             },
             failure: function(message) {
                 config.failure.call(config.scope, message);
+            },
+            progressCallback: function(progress) {
+                if (config.progressCallback) {
+                    config.progressCallback.call(config.scope, progress);
+                }
             }
         });
     },
@@ -78,6 +84,10 @@ Ext.define('KidStory.model.Book', {
     urlForFile: function(file) {
         if (!this.isLocal()) {
             return false;
+        }
+
+        if (KidStory.util.PhoneGap.is()) {
+            return cordova.file.dataDirectory + this.get('path') + '/' + file;
         }
 
         return URL.createObjectURL(KidStory.util.Zip.memory[this.get('path') + '/'][file].blob);
@@ -88,14 +98,32 @@ Ext.define('KidStory.model.Book', {
             return false;
         }
 
-        var blob = KidStory.util.Zip.memory[this.get('path') + '/'][config.file].blob,
-            reader = new FileReader();
+        if (KidStory.util.PhoneGap.is()) {
+            Ext.Ajax.request({
+                url: this.urlForFile(config.file),
+                scope: this,
+                success: function(response) {
+                    config.success.call(config.scope, response.responseText);
+                },
+                failure: function() {
+                    config.failure.call(config.scope);
+                }
+            });
+        }
+        else {
+            var blob = KidStory.util.Zip.memory[this.get('path') + '/'][config.file].blob,
+                reader = new FileReader();
 
-        reader.addEventListener('loadend', function() {
-            config.success.call(config.scope, reader.result);
-        });
+            if (reader._realReader) {
+                reader = reader._realReader;
+            }
 
-        reader.readAsText(blob);
+            reader.addEventListener('loadend', function() {
+                config.success.call(config.scope, reader.result);
+            });
+
+            reader.readAsText(blob);
+        }
     },
 
     // @private

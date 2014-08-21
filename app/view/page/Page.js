@@ -198,7 +198,7 @@ Ext.define('KidStory.view.page.Page', {
             book = me.getBook(),
             pageIndex = me.getPageIndex(),
             pageData = me.pageData(),
-            base = KidStory.app.booksBaseURL + me.getBook().get('path') + '/',
+            base = KidStory.util.Config.booksBaseURL + me.getBook().get('path') + '/',
             image;
 
         image = book.urlForFile('Image-' + (pageIndex + 1) + '.' + pageData['imageExtension']);

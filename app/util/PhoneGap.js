@@ -14,7 +14,7 @@ Ext.define('KidStory.util.PhoneGap', {
          * Returns true if the app is running inside PhoneGap
          */
         is: function() {
-            if (Ext.browser.is.PhoneGap) {
+            if (typeof cordova != "undefined" || Ext.browser.is.PhoneGap) {
                 return true;
             }
 
