@@ -161,6 +161,7 @@
     if (filePath != nil) {
         // create resourceURL
         resourceURL = [NSURL fileURLWithPath:filePath];
+        
         // try to access file
         NSFileManager* fMgr = [NSFileManager defaultManager];
         if (![fMgr fileExistsAtPath:filePath]) {

@@ -11,7 +11,7 @@ Ext.define('KidStory.util.phonegap.IAP', {
 
     statics: {
         singleton: function() {
-            return KidStory.util.phonegap.iap.iOS;
+            return Ext.os.is.Android ? KidStory.util.phonegap.iap.Android : KidStory.util.phonegap.iap.iOS;
         },
 
         initialize: function() {

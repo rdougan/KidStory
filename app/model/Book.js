@@ -87,7 +87,13 @@ Ext.define('KidStory.model.Book', {
         }
 
         if (KidStory.util.PhoneGap.is()) {
-            return cordova.file.dataDirectory + this.get('path') + '/' + file;
+            var url = cordova.file.dataDirectory + this.get('path') + '/' + file;
+
+            if (Ext.os.is.iOS) {
+                return url.replace('file://', '');
+            }
+
+            return url;
         }
 
         return URL.createObjectURL(KidStory.util.Zip.memory[this.get('path') + '/'][file].blob);

@@ -32,8 +32,8 @@ Ext.define('KidStory.util.phonegap.iap.iOS', {
         
         onReady: function() {
         	var productIds = [
-	            "com.example.app.inappid1", 
-	            "com.example.app.inappid2"
+	            "com.nghidang.kidstory.book2", 
+	            "com.nghidang.kidstory.book3"
 	        ];
 
 	        window.storekit.load(productIds, function(validProducts, invalidProductIds) {

@@ -36,7 +36,7 @@ Ext.define('KidStory.util.Zip', {
                             self.memory[entry.filename] = {};
 
                             if (isPhoneGap) {
-                                window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
+                                window.requestFileSystem(LocalFileSystem.TEMPORARY, 0, function(fileSystem) {
                                     // console.log('creating dir');
 
                                     window.resolveLocalFileSystemURL(cordova.file.dataDirectory, function(dirEntry) {
@@ -73,7 +73,7 @@ Ext.define('KidStory.util.Zip', {
                                 };
 
                                 if (isPhoneGap) {
-                                    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
+                                    window.requestFileSystem(LocalFileSystem.TEMPORARY, 0, function(fileSystem) {
                                         // console.log('getting directory', directory.filename.replace('/', ''));
 
                                         window.resolveLocalFileSystemURL(cordova.file.dataDirectory, function(dirEntry) {
