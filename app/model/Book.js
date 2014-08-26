@@ -12,7 +12,10 @@ Ext.define('KidStory.model.Book', {
             'name',
             'path',
             'price',
+            'identifier',
             'samplePageCount',
+
+            'purchased',
 
             {
                 name: 'price',
@@ -37,12 +40,31 @@ Ext.define('KidStory.model.Book', {
         ]
     },
 
+    constructor: function() {
+        this.callParent(arguments);
+
+        this.set('purchased', false);
+
+        if (this.isPurchased()) {
+            this.markPurchased();
+        }
+    },
+
     isLocal: function() {
         return Boolean(KidStory.util.Zip.memory[this.get('path') + '/']);
     },
     
     isPurchased: function() {
-        return false;
+        if (!this.get('price')) {
+            return true;
+        }
+
+        return Boolean(localStorage.getItem(this.get('identifier')));
+    },
+
+    markPurchased: function() {
+        localStorage.setItem(this.get('identifier'), true);
+        this.set('purchased', true);
     },
 
     isPurchasable: function() {

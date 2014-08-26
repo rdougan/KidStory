@@ -66,7 +66,9 @@ Ext.application({
         // Initialize the main view
         Ext.Viewport.add(Ext.create('KidStory.view.BookList'));
 
-        KidStory.util.phonegap.IAP.initialize();
+        setTimeout(function() {
+            KidStory.util.phonegap.IAP.initialize();
+        }, 5000);
     },
 
     onUpdated: function() {

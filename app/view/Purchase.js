@@ -71,6 +71,10 @@ Ext.define('KidStory.view.Purchase', {
         me.down('#samplePages').on('tap', function() {
             me.fireEvent('samplepages', me, me.getBook());
         }, me);
+
+        me.down('#purchase').on('tap', function() {
+            me.fireEvent('purchase', me, me.getBook());
+        }, me);
     },
 
     updateBook: function(newBook) {

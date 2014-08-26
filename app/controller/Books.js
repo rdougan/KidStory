@@ -64,7 +64,7 @@ Ext.define('KidStory.controller.Books', {
     selectBook: function(dataView, index, target, book, e) {
         var me = this;
 
-        if (book.get('price')) {
+        if (book.isPurchasable()) {
             me.showPurchaseBook(book);
         } else {
             me.openBook(book);
@@ -84,6 +84,7 @@ Ext.define('KidStory.controller.Books', {
                 listeners: {
                     scope: this,
                     samplepages: 'onSamplePages',
+                    purchase: 'onPurchase',
                     close: function() {
                         this.purchaseView.hide();
                     }
@@ -185,6 +186,33 @@ Ext.define('KidStory.controller.Books', {
     onSamplePages: function(view, book) {
         view.hide();
         this.openBook(book);
+    },
+
+    onPurchase: function(view, book) {
+        var me = this;
+
+        Ext.Viewport.setMasked({
+            xtype: 'loadmask'
+        });
+
+        KidStory.util.phonegap.IAP.purchase({
+            identifier: book.get('identifier'),
+            success: function() {
+                console.log('success!');
+                book.markPurchased();
+
+                me.purchaseView.hide();
+
+                Ext.Viewport.setMasked(false);
+            },
+            failure: function(error) {
+                console.log('error', error);
+
+                Ext.Viewport.setMasked(false);
+
+                Ext.Msg.alert('Problem', 'There was a problem buying this book. Please try again');
+            }
+        })
     },
 
     /**

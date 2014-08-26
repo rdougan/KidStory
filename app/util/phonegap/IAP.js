@@ -15,11 +15,15 @@ Ext.define('KidStory.util.phonegap.IAP', {
         },
 
         initialize: function() {
-            this.singleton().initialize();
+            this.singleton().initialize.apply(this, arguments);
         },
 
         restore: function() {
-            this.singleton().restore();
+            this.singleton().restore.apply(this, arguments);
+        },
+
+        purchase: function() {
+            this.singleton().purchase.apply(this, arguments);
         }
     }
 });

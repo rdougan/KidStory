@@ -13,7 +13,7 @@ Ext.define('KidStory.view.BookList', {
     config: {
         id: 'bookList',
         store: 'Books',
-        itemTpl: '<span>{name}</span><div class="price">{formattedPrice}</div>',
+        itemTpl: '<span>{name}</span><tpl if="!purchased"><div class="price">{formattedPrice}</div></tpl>',
         inline: {
             wrap: false
         },
