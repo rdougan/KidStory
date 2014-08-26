@@ -1,13 +1,6 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
-        "file": "plugins/cc.fovea.plugins.inapppurchase/InAppPurchase.js",
-        "id": "cc.fovea.plugins.inapppurchase.InAppPurchase",
-        "clobbers": [
-            "window.storekit"
-        ]
-    },
-    {
         "file": "plugins/org.apache.cordova.file/www/DirectoryEntry.js",
         "id": "org.apache.cordova.file.DirectoryEntry",
         "clobbers": [
@@ -166,14 +159,21 @@ module.exports = [
         "clobbers": [
             "window.Media"
         ]
+    },
+    {
+        "file": "plugins/cc.fovea.plugins.inapppurchase/InAppPurchase.js",
+        "id": "cc.fovea.plugins.inapppurchase.InAppPurchase",
+        "clobbers": [
+            "storekit"
+        ]
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "cc.fovea.plugins.inapppurchase": "3.4.1",
     "org.apache.cordova.file": "1.3.0",
-    "org.apache.cordova.media": "0.2.12"
+    "org.apache.cordova.media": "0.2.12",
+    "cc.fovea.plugins.inapppurchase": "3.4.1"
 }
 // BOTTOM OF METADATA
 });
